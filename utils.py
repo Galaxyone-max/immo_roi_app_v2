@@ -1,9 +1,10 @@
-
 import os, json, hashlib, time, pandas as pd, numpy as np
+import tempfile, pathlib
 
 APP_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(APP_DIR, "data")
-os.makedirs(DATA_DIR, exist_ok=True)
+# ÉCRITURE DANS UN DOSSIER TEMP (autorisé sur Streamlit Cloud)
+DATA_DIR = os.path.join(tempfile.gettempdir(), "immo_roi_data")
+pathlib.Path(DATA_DIR).mkdir(parents=True, exist_ok=True)
 
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
 PROJECTS_FILE = os.path.join(DATA_DIR, "projects.json")
